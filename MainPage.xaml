@@ -1,0 +1,24 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MaApp.Controls"
+             x:Name="this"
+             BindingContext="{x:Reference this}"
+             x:Class="MaApp.MainPage">
+
+    <VerticalStackLayout>
+        <Label Text="SingleCard: (title shown)"/>
+        <controls:CardView CardTitle="{Binding SingleCard.CardTitle, Source={x:Reference this}}"/>
+
+        <Label Text="MultipleCards: (title not shown)"/>
+        <ListView ItemsSource="{Binding MultipleCards}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controls:CardView CardTitle="{Binding CardTitle}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+
+</ContentPage>
